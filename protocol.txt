@@ -1,0 +1,53 @@
+Admin
+
+1)Greeting
+HI@@@ADMIN@@@
+
+2)Add topic
+NEW@@@TOPIC@@@
+
+3)Remove topic
+REMOVE@@@TOPIC@@@
+
+4)Send message to users
+SEND@@@TOPIC@@@MESSAGE@@@
+
+5)get topics
+GET@@@TOPICS@@@
+
+6)Exit
+EXIT@@@ADMIN@@@
+
+
+
+Server
+
+1)Greeting
+HI@@@SERVER@@@
+
+2)Exit
+BYE@@@SERVER@@@
+
+3)Send topics to client
+TOPICS@@@TOPIC1@@@TOPIC2@@@TOPIC3
+
+4)Send message to client
+MESSAGE@@@TOPIC@@@MESSAGE@@@
+
+
+Client
+
+1)Greeting
+HI@@@CLIENT@@@
+
+2)Exit
+BYE@@@CLIENT@@@
+
+3)Subscribe to topic
+SUBSCRIBE@@@TOPIC@@@
+
+4)Unsubscribe to topic
+UNSUBSCRIBE@@@TOPIC@@@
+
+5)Get topics
+GET@@@TOPICS@@@
