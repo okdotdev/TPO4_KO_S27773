@@ -41,7 +41,7 @@ public class Server {
         // Rejestracja kanału gniazda serwera u selektora
         serverChannel.register(selector, SelectionKey.OP_ACCEPT);
 
-        System.out.println("Serwer: czekam ... ");
+        System.out.println("Serwer: awaiting for connections ... ");
 
         // Selekcja gotowych operacji do wykonania i ich obsługa
         // w pętli dzialania serwera
@@ -162,7 +162,12 @@ public class Server {
 
             switch (tokens[0]) {
                 case "HI" -> {
-                    sc.write(charset.encode(CharBuffer.wrap("HI@@@SERVER@@@")));
+                    StringBuilder topicsStringBuilder = new StringBuilder();
+                    for (String topic : this.topics) {
+                        topicsStringBuilder.append(topic).append("@@@");
+                    }
+                    sc.write(charset.encode(CharBuffer.wrap("TOPICS@@@" + topicsStringBuilder)));
+                    System.out.println("Topics sent to client: " + sc.socket().getInetAddress());
                     users.put(sc, new ArrayList<>());
                     if (tokens[1].equals("ADMIN")) {
                         users.get(sc).add("ADMIN");

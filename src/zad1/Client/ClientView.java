@@ -32,6 +32,7 @@ public class ClientView extends JFrame {
         JButton subscribeToTopicButton = new JButton("Subscribe  topic");
         JButton unsubscribeTopicButton = new JButton("Unsubscribe topic");
         JButton displayAllTopicsButton = new JButton("Display all topics");
+        JButton subscribedToTopicsButton = new JButton("Subscribed  topics");
         JButton exitButton = new JButton("Exit");
 
         subscribeToTopicButton.addActionListener(new ActionListener() {
@@ -76,6 +77,16 @@ public class ClientView extends JFrame {
             }
         });
 
+        subscribedToTopicsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                outputTextArea.append("Subscribed topics:\n");
+                for (String topic : client.getSubscribedTopics()) {
+                    outputTextArea.append(topic + "\n");
+                }
+            }
+        });
+
 
         exitButton.addActionListener(new ActionListener() {
             @Override
@@ -88,6 +99,7 @@ public class ClientView extends JFrame {
         buttonPanel.add(subscribeToTopicButton);
         buttonPanel.add(unsubscribeTopicButton);
         buttonPanel.add(displayAllTopicsButton);
+        buttonPanel.add(subscribedToTopicsButton);
         buttonPanel.add(exitButton);
 
         mainPanel.add(buttonPanel, BorderLayout.EAST);

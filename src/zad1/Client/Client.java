@@ -20,6 +20,7 @@ public class Client {
     private SocketChannel channel = null;
 
     private final List<String> topics = new ArrayList<>();
+    private final List<String> subscribedTopics = new ArrayList<>();
 
     private final List<ClientView> eventListeners = new ArrayList<>();
 
@@ -108,12 +109,12 @@ public class Client {
     }
 
     public void subscribeTopic(String topic) throws IOException {
-        topics.add(topic);
+        subscribedTopics.add(topic);
         sendMessage("SUBSCRIBE@@@" + topic + "@@@");
     }
 
     public void unsubscribedTopic(String topic) throws IOException {
-        topics.remove(topic);
+        subscribedTopics.remove(topic);
         sendMessage("UNSUBSCRIBE@@@" + topic + "@@@");
     }
 
@@ -121,6 +122,10 @@ public class Client {
     public List<String> getAllTopics() throws IOException {
         sendMessage("GET@@@TOPICS@@@");
         return topics;
+    }
+
+    public List<String> getSubscribedTopics() {
+        return subscribedTopics;
     }
 
     public void exit() {
